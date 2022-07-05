@@ -1,36 +1,26 @@
-const { Schema, model } = require('mongoose');
+const { Schema, model } = require("mongoose");
 
-const userSchema = new Schema(
-  {
-    first: String,
-    last: String,
-    age: Number,
-    applications: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: 'Application',
-      },
-    ],
-  },
-  {
-    toJSON: {
-      virtuals: true,
+const userSchema = new Schema({
+  email: { type: String, required: true },
+  username: { type: String, required: true },
+  thoughts: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Thought",
     },
-    id: false,
-  }
-);
+  ],
+  friends: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "User",
+    },
+  ],
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
+});
 
-userSchema
-  .virtual('fullName')
-  .get(function () {
-    return `${this.first} ${this.last}`;
-  })
-  .set(function (v) {
-    const first = v.split(' ')[0];
-    const last = v.split(' ')[1];
-    this.set({ first, last });
-  });
-
-const User = model('user', userSchema);
+const User = model("user", userSchema);
 
 module.exports = User;
