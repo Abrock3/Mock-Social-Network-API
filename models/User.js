@@ -1,6 +1,10 @@
 const { Schema, model } = require("mongoose");
 
 const userSchema = new Schema({
+  // userId: {
+  //   type: Schema.Types.ObjectId,
+  //   default: () => new Types.ObjectId(),
+  // },
   email: { type: String, required: true },
   username: { type: String, required: true },
   thoughts: [
@@ -18,6 +22,7 @@ const userSchema = new Schema({
   createdAt: {
     type: Date,
     default: Date.now,
+    required: true,
   },
 });
 

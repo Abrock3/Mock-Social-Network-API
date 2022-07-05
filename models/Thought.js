@@ -1,16 +1,16 @@
 const { Schema, model } = require("mongoose");
 
 const thoughtSchema = new Schema({
+  // thoughtId: {
+  //   type: Schema.Types.ObjectId,
+  //   default: () => new Types.ObjectId(),
+  // },
   thoughtText: { type: String, required: true },
-  username: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "User",
-    },
-  ],
+  username: { type: String, require: true },
   createdAt: {
     type: Date,
     default: Date.now,
+    require: true,
   },
   reactions: [
     {
