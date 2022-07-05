@@ -1,0 +1,30 @@
+{
+  "name": "mock-social-network-api",
+  "version": "1.0.0",
+  "description": "A mock social network API that uses Mongoose to create and regulate a database in a simple social network-style structure. Express was used to create routes to allow a client to manipulate the database and fetch data from it.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "seed": "node utils/seed",
+    "dev": "nodemon index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Abrock3/Mock-Social-Network-API.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Abrock3/Mock-Social-Network-API/issues"
+  },
+  "homepage": "https://github.com/Abrock3/Mock-Social-Network-API#readme",
+  "dependencies": {
+    "express": "^4.18.1",
+    "mongoose": "^6.4.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.9"
+  }
+}
