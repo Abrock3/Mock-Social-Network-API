@@ -22,7 +22,6 @@
   "homepage": "https://github.com/Abrock3/Mock-Social-Network-API#readme",
   "dependencies": {
     "express": "^4.18.1",
-    "mongodb": "^4.7.0",
     "mongoose": "^6.4.3"
   },
   "devDependencies": {

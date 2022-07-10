@@ -46,25 +46,24 @@ connection.once("open", async () => {
         },
       }
     );
-    let reactionArray = [];
     for (let i = 0; i < 3; i++) {
       const randUser = Math.floor(Math.random() * userData.length);
       const randReaction =
         reactions[Math.floor(Math.random() * reactions.length)];
-      reactionArray.push({
+      const reactionObject = {
         username: userData[randUser].username,
         userId: userData[randUser]._id,
         reactionBody: randReaction,
-      });
+      };
+      await Thought.findOneAndUpdate(
+        { _id: thought._id },
+        {
+          $push: {
+            reactions: reactionObject,
+          },
+        }
+      );
     }
-    await Thought.findOneAndUpdate(
-      { _id: thought._id },
-      {
-        $addToSet: {
-          reactions: reactionArray,
-        },
-      }
-    );
   }
 
   console.log("Seeded users:");

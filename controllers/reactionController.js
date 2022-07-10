@@ -50,22 +50,45 @@ module.exports = {
   },
   updateReaction(req, res) {
     Thought.findOneAndUpdate(
-      { _id: req.params.thoughtId, "reactions._id": req.params.reactionId },
+      { _id: req.params.thoughtId },
       {
         $set: {
-          "reactions.$.reactionBody": req.body.reactionBody,
+          "reactions.$[element].reactionBody": req.body.reactionBody,
         },
       },
-      { new: true }
+      {
+        arrayFilters: [{ "element._id": req.params.reactionId }],
+        new: true,
+      }
     )
-      .then((user) => {
-        if (user) {
-          res.json(user);
+      .then((thought) => {
+        if (thought) {
+          res.json(thought);
         } else {
-          res.status(404).json({ message: "No user with that ID!" });
+          res.status(404).json({ message: "No thought with that ID!" });
         }
       })
       .catch((err) => res.status(500).json(err));
   },
-  deleteReaction(req, res) {},
+  deleteReaction(req, res) {
+    Thought.findOneAndUpdate(
+      { _id: req.params.thoughtId },
+      {
+        $pull: {
+          reactions: { _id: req.params.reactionId},
+        },
+      },
+      {
+        new: true,
+      }
+    )
+      .then((thought) => {
+        if (thought) {
+          res.json(thought);
+        } else {
+          res.status(404).json({ message: "No thought with that ID!" });
+        }
+      })
+      .catch((err) => res.status(500).json(err));
+  },
 };
