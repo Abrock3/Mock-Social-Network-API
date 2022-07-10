@@ -5,14 +5,17 @@ const { users, thoughts, reactions } = require("./data");
 connection.on("error", (err) => err);
 
 connection.once("open", async () => {
-  console.log("connected");
+  console.log("connected to db");
   await User.deleteMany({});
   await Thought.deleteMany({});
-  await User.insertMany(users);
-
+  // Typically I'd like to use "insertMany" but I found it created issues with getters, and would throw an error
+  for (const user of users) {
+    await User.create(user);
+  }
   let userData = await User.find();
-  userData.forEach(async (user) => {
-    await User.findOneAndUpdate(
+
+  for (const user of userData) {
+    await User.updateOne(
       { _id: user._id },
       {
         $addToSet: {
@@ -20,8 +23,7 @@ connection.once("open", async () => {
         },
       }
     );
-  });
-
+  }
   const finalThoughts = thoughts.map((thought) => {
     const randIndex = Math.floor(Math.random() * userData.length);
 
@@ -32,8 +34,10 @@ connection.once("open", async () => {
       reactions: [],
     };
   });
-
-  await Thought.insertMany(finalThoughts);
+  // Typically I'd like to use "insertMany" but I found it created issues with getters, and would throw an error
+  for (const thought of finalThoughts) {
+    await Thought.create(thought);
+  }
 
   const thoughtData = await Thought.find();
 

@@ -1,23 +1,21 @@
 const { Schema, model } = require("mongoose");
 const Reaction = require("./Reaction.js");
 
-// todo: add reaction count
-
 const thoughtSchema = new Schema(
   {
-    username: { type: String, required: true },
     thoughtText: {
       type: String,
-      required: "You must input the thought's text",
+      required: "You must send thoughtText in the body of the request",
       maxlength: 280,
       minLength: 1,
     },
-    reactions: [Reaction],
+    username: { type: String, required: true },
     userId: {
       type: Schema.Types.ObjectId,
       ref: "User",
-      required: true,
+      required: "You must send a valid userId in the body of the request",
     },
+    reactions: [Reaction],
     createdAt: { type: Date, get: (timestamp) => timestamp.toLocaleString() },
     updatedAt: { type: Date, get: (timestamp) => timestamp.toLocaleString() },
   },
@@ -27,6 +25,7 @@ const thoughtSchema = new Schema(
       virtuals: true,
     },
     timestamps: true,
+    id: false,
   }
 );
 thoughtSchema.virtual("reactionCount").get(function () {
