@@ -36,8 +36,8 @@ connection.once("open", async () => {
   await Thought.collection.insertMany(finalThoughts);
 
   const thoughtData = await Thought.find();
-  console.log(thoughtData);
-  thoughtData.forEach(async (thought) => {
+
+  for (const thought of thoughtData) {
     await User.findOneAndUpdate(
       { _id: thought.userId },
       {
@@ -60,12 +60,12 @@ connection.once("open", async () => {
     await Thought.findOneAndUpdate(
       { _id: thought._id },
       {
-        $push: {
+        $addToSet: {
           reactions: reactionArray,
         },
       }
     );
-  });
+  }
 
   console.log("Seeded users:");
   console.log(await User.find());
