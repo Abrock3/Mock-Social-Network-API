@@ -8,7 +8,7 @@ connection.once("open", async () => {
   console.log("connected");
   await User.deleteMany({});
   await Thought.deleteMany({});
-  await User.collection.insertMany(users);
+  await User.insertMany(users);
 
   let userData = await User.find();
   userData.forEach(async (user) => {
@@ -33,7 +33,7 @@ connection.once("open", async () => {
     };
   });
 
-  await Thought.collection.insertMany(finalThoughts);
+  await Thought.insertMany(finalThoughts);
 
   const thoughtData = await Thought.find();
 

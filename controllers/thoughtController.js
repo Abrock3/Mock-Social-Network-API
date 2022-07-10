@@ -27,6 +27,7 @@ module.exports = {
     User.findOne({ _id: req.body.userId })
       .then((user) => {
         if (user) {
+          // todo: need to push thought id to user's thoughts array
           req.body.username = user.username;
           Thought.create(req.body)
             .then((thought) => res.json(thought))
@@ -64,6 +65,7 @@ module.exports = {
     Thought.findOneAndDelete({ _id: req.params.thoughtId })
       .then((thought) => {
         if (thought) {
+          // need to remove thought from user's list as well
           res.json({
             message: `Thought with id ${req.params.thoughtId} deleted!`,
           });

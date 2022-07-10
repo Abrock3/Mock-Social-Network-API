@@ -52,6 +52,7 @@ module.exports = {
     User.findOneAndDelete({ _id: req.params.userId })
       .then((user) => {
         if (user) {
+          // need to delete all thoughts by this user as well.
           res.json({
             message: `User with id ${req.params.thoughtId} deleted!`,
           });
