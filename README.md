@@ -38,7 +38,7 @@ Once you've got your API client installed, you'll be able to use the defined rou
 
 The database structure is fairly simple: There are 2 collections named users and thoughts (thoughts are synonymous with posts).
 
-Each document in the users collection defines the identifying information for a user, specifically an \_id, username, email, an array of thought \_ids that they've created, an array of their friends' \_ids, and the times at which it was created and updated
+Each document in the users collection defines the identifying information for a user, specifically an \_id, username, email, an array of thought \_ids that they've created, an array of their friends' \_ids, and the times at which it was created and updated.
 
 Each document in the thoughts collection defines a user's thought. Each one has an \_id, the text of the thought, the \_id and username of the user that created it, the time at which it was created and updated, and an array of subdocuments called reactions.
 
