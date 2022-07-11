@@ -30,7 +30,7 @@ I personally used the [Insomnia API client](https://insomnia.rest/); visit the l
 
 ## Usage
 
-First, [here's](https://drive.google.com/drive/folders/1ERUH76iVwctyfebCOE0k0yKGGl5EosZq?usp=sharing) a link to a video of me using Insomnia to test each route, if you're curious:
+First, [here's](https://drive.google.com/drive/folders/1ERUH76iVwctyfebCOE0k0yKGGl5EosZq?usp=sharing) a link to a video of me using Insomnia to test each route, if you're curious.
 
 Once you've got your API client installed, you'll be able to use the defined routes to create and modify data within this database (those routes are below).
 
