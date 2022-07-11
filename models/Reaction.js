@@ -8,6 +8,7 @@ const reactionSchema = new Schema(
     // so I stuck with that
     reactionBody: {
       type: String,
+      // this is equivalent to required: true, but will also return a custom error message
       required: "You must include a reactionBody in the body of the request",
       maxLength: 280,
       minLength: 1,
@@ -17,7 +18,9 @@ const reactionSchema = new Schema(
       type: Schema.Types.ObjectId,
       ref: "User",
       required: "You must include a valid userId in the body of the request",
-    },
+    }, 
+    // these fields are created by the mongoose "timestamps: true" option (below)
+    // we can use getters to modify their values when requested
     createdAt: { type: Date, get: (timestamp) => timestamp.toLocaleString() },
     updatedAt: { type: Date, get: (timestamp) => timestamp.toLocaleString() },
   },
@@ -27,7 +30,8 @@ const reactionSchema = new Schema(
       virtuals: true,
     },
     timestamps: true,
-  id:false}
+    id: false,
+  }
 );
 
 const Reaction = reactionSchema;

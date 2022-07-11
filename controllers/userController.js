@@ -1,6 +1,8 @@
 const { User, Thought } = require("../models");
 
+// this gets exported to the userRoutes.js file for use in the app's routes
 module.exports = {
+  // gets all users
   getUsers(req, res) {
     User.find()
       .then((users) => {
@@ -12,6 +14,7 @@ module.exports = {
       })
       .catch((err) => res.status(500).json(err));
   },
+  // gets one user by their _id
   getSingleUser(req, res) {
     User.findOne({ _id: req.params.userId })
       .then((user) => {
@@ -23,6 +26,7 @@ module.exports = {
       })
       .catch((err) => res.status(500).json(err));
   },
+  // creates a new user, requires a JSON body with a username and valid email
   createUser(req, res) {
     User.create(req.body)
       .then((user) => res.json(user))
@@ -30,6 +34,7 @@ module.exports = {
         return res.status(500).json(err);
       });
   },
+  // updates a user; requires a JSON body with either a username or a valid email, or both
   updateUser(req, res) {
     User.findOneAndUpdate(
       { _id: req.params.userId },
@@ -47,6 +52,8 @@ module.exports = {
       })
       .catch((err) => res.status(500).json(err));
   },
+  // finds and deletes a user's entry; then it will delete each of their thoughts in the thoughts collection. 
+  // Their reactions will remain
   deleteUser(req, res) {
     User.findOneAndDelete({ _id: req.params.userId })
       .then((user) => {
@@ -63,6 +70,7 @@ module.exports = {
       })
       .catch((err) => res.status(500).json(err));
   },
+  // gets a user's friends by the user's _id
   getFriends(req, res) {
     User.findOne({ _id: req.params.userId })
       .then((user) => {
@@ -78,6 +86,7 @@ module.exports = {
       })
       .catch((err) => res.status(500).json(err));
   },
+  // adds a friendId to a user's friends array
   createFriend(req, res) {
     User.findOne({ _id: req.params.friendId }).then((friend) => {
       if (friend && friend.length !== 0) {
@@ -105,6 +114,7 @@ module.exports = {
       }
     });
   },
+  // removes a friendID from a user's friends array
   deleteFriend(req, res) {
     User.findOneAndUpdate(
       { _id: req.params.userId },

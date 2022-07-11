@@ -11,6 +11,7 @@ const {
   deleteFriend,
 } = require("../../controllers/userController.js");
 
+// defines routes for express. The routes' functions are imported from the controllers folder
 router.route("/").get(getUsers).post(createUser);
 
 router.route("/:userId").get(getSingleUser).put(updateUser).delete(deleteUser);

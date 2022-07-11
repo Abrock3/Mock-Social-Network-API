@@ -11,6 +11,7 @@ const {
   deleteReaction,
 } = require("../../controllers/thoughtController.js");
 
+// defines routes for express. The routes' functions are imported from the controllers folder
 router.route("/").get(getThoughts).post(createThought);
 
 router
