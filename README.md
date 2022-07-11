@@ -57,6 +57,9 @@ Get all users:
 ```
 http://localhost:3001/api/users
 ```
+
+---
+
 <span style="color: dodgerblue;">
 Get one user by _id (replace # with the _id you'd like to query. You can obtain this _id by using other routes, such as the get all users route):
 </span>
@@ -64,6 +67,9 @@ Get one user by _id (replace # with the _id you'd like to query. You can obtain 
 ```
 http://localhost:3001/api/users/#
 ```
+
+---
+
 <span style="color: dodgerblue;">
 Create new user (JSON body required):
 </span>
@@ -80,6 +86,8 @@ A sample JSON body for this route:
 {"username": "CrabEnthusiast4",
 "email":"tenLeggedTerror@gmail.com"}
 ```
+
+---
 
 <span style="color: dodgerblue;">
 Update user (JSON body required, and replace # with a user's _id)
@@ -114,6 +122,8 @@ or
 email": "DecapodianDomination@gmail.com}
 ```
 
+---
+
 <span style="color: dodgerblue;">
 Delete user (replace # with a user's _id, this will also delete all the user's thoughts in the thoughts collection. Their reactions will remain):
 </span>
@@ -121,6 +131,9 @@ Delete user (replace # with a user's _id, this will also delete all the user's t
 ```
 http://localhost:3001/api/users/#
 ```
+
+---
+
 <span style="color: dodgerblue;">
 Get Friends (replace # with a user's _id):
 </span>
@@ -128,6 +141,9 @@ Get Friends (replace # with a user's _id):
 ```
 http://localhost:3001/api/users/#/friends
 ```
+
+---
+
 <span style="color: dodgerblue;">
 Add or remove friend (replace # with the user's _id and ?? with the _id of the user you want to add or remove as a friend):
 </span>
@@ -135,6 +151,8 @@ Add or remove friend (replace # with the user's _id and ?? with the _id of the u
 ```
 http://localhost:3001/api/users/#/friends/??
 ```
+
+---
 
 #### Thought Routes
 
@@ -145,6 +163,9 @@ Get all thoughts:
 ```
 http://localhost:3001/api/thoughts
 ```
+
+---
+
 <span style="color: dodgerblue;">
 Get one thought (replace # with a thought's _id):
 </span>
@@ -152,6 +173,9 @@ Get one thought (replace # with a thought's _id):
 ```
 http://localhost:3001/api/thoughts/#
 ```
+
+---
+
 <span style="color: dodgerblue;">
 Create new thought (JSON body required, this will also add the new thought's ID the user's "thoughts" array):
 </span>
@@ -169,6 +193,8 @@ Sample JSON body for this route (replace # with a user's _id):
 "userId":"#"}
 ```
 
+---
+
 <span style="color: dodgerblue;">
 Update thought (JSON body required, and replace # with a thought's _id):
 </span>
@@ -185,6 +211,8 @@ Sample JSON body for this route:
 {"thoughtText":"Hola!"}
 ```
 
+---
+
 <span style="color: dodgerblue;">
 Delete thought (replace # with a thought's _id, this will also delete the thought's _id from the user's "thoughts" array):
 </span>
@@ -192,6 +220,9 @@ Delete thought (replace # with a thought's _id, this will also delete the though
 ```
 http://localhost:3001/api/thoughts/#
 ```
+
+---
+
 <span style="color: dodgerblue;">
 Get all reactions to a thought (replace # with a thought's _id):
 </span>
@@ -199,6 +230,9 @@ Get all reactions to a thought (replace # with a thought's _id):
 ```
 http://localhost:3001/api/thoughts/#/reactions
 ```
+
+---
+
 <span style="color: dodgerblue;">
 Create new reaction to a thought (JSON body required, and replace # with a thought's _id):
 </span>
@@ -216,6 +250,8 @@ Sample JSON body for this route (replace # with a user's _id):
  "reactionBody":"Hello!"}
 ```
 
+---
+
 <span style="color: dodgerblue;">
 Update reaction (JSON body required, replace # with a thought's _id, and replace ?? with a reaction's _id):
 </span>
@@ -232,15 +268,17 @@ Sample JSON body for this route:
 {"reactionBody":"This is the updated text!"}
 ```
 
+---
+
 <span style="color: dodgerblue;">
 Delete reaction (replace # with a thought's _id, and replace ?? with a reaction's _id):
 </span>
-
 
 ```
 http://localhost:3001/api/thoughts/#/reactions/??
 ```
 
+---
 
 Screenshots of the API during function:
 ![Screenshot](images/thoughtCreationScreenshot.jpg?raw=true "Screenshot")
