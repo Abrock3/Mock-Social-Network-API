@@ -280,10 +280,12 @@ http://localhost:3001/api/thoughts/#/reactions/??
 
 ---
 
+
 Screenshots of the API during function:
-![Screenshot](images/thoughtCreationScreenshot.jpg?raw=true "Screenshot")
 
 ![Screenshot](images/userCreationScreenshot.jpg?raw=true "Screenshot")
+
+![Screenshot](images/thoughtCreationScreenshot.jpg?raw=true "Screenshot")
 
 ## Credits
 
